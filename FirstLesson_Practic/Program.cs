@@ -1,37 +1,39 @@
-﻿namespace FirstLesson_Practic
+﻿using static System.Runtime.InteropServices.JavaScript.JSType;
+
+namespace FirstLesson_Practic
 {
     internal class Program
     {
-
-        static int ReverseNumber(int number)
+        static int FibonachiRange(int firstNumber, int secondNumber)
         {
-            int reversed = 0;
-            while (number != 0)
+            int a = 0;
+            int b = 1;
+            int c = 0;
+            Console.WriteLine("Fibonacci numbers in the range:");
+            while (c <= secondNumber)
             {
-                reversed = reversed * 10 + number % 10;
-                number /= 10;
+                if (c >= firstNumber)
+                {
+                    Console.WriteLine(c);
+                }
+                c = a + b;
+                a = b;
+                b = c;
             }
-            return reversed;
+            return 0;
         }
+
 
         static void Main(string[] args)
         {
-            Console.WriteLine("Enter 6-digit number:");
+            Console.WriteLine("Enter first number:");
+            int firstNumber = int.Parse(Console.ReadLine());
 
-            if (!int.TryParse(Console.ReadLine(), out int number))
-            {
-                Console.WriteLine("Error: Please enter a valid number.");
-                return;
-            }
+            Console.WriteLine("Enter second number:");
+            int secondNumber = int.Parse(Console.ReadLine());
 
-            if (number < 100000 || number > 999999)
-            {
-                Console.WriteLine("The number is not 6-digit.");
-                return;
-            }
-
-            int result = ReverseNumber(number);
-            Console.WriteLine($"Reversed number: {result}");
+            int result = FibonachiRange(firstNumber, secondNumber);
+            Console.WriteLine($"Fibonacci numbers in the range: {result}");
         }
     }
 }
