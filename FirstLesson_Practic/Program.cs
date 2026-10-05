@@ -2,33 +2,36 @@
 {
     internal class Program
     {
+
+        static int ReverseNumber(int number)
+        {
+            int reversed = 0;
+            while (number != 0)
+            {
+                reversed = reversed * 10 + number % 10;
+                number /= 10;
+            }
+            return reversed;
+        }
+
         static void Main(string[] args)
         {
-            int[] myNum = new int[5];
+            Console.WriteLine("Enter 6-digit number:");
 
-            for (int i = 0; i < myNum.Length; i++)
+            if (!int.TryParse(Console.ReadLine(), out int number))
             {
-                Console.Write($"Введіть число {i + 1}: ");
-                myNum[i] = Convert.ToInt32(Console.ReadLine());
+                Console.WriteLine("Error: Please enter a valid number.");
+                return;
             }
 
-            int sum = 0;
-            long product = 1;
-            int max = myNum[0];
-            int min = myNum[0];
-
-            for (int i = 0; i < myNum.Length; i++)
+            if (number < 100000 || number > 999999)
             {
-                sum += myNum[i];
-                product *= myNum[i];
-                if (myNum[i] > max) max = myNum[i];
-                if (myNum[i] < min) min = myNum[i];
+                Console.WriteLine("The number is not 6-digit.");
+                return;
             }
 
-            Console.WriteLine($"Сума: {sum}");
-            Console.WriteLine($"Максимум: {max}");
-            Console.WriteLine($"Мінімум: {min}");
-            Console.WriteLine($"Добуток: {product}");
+            int result = ReverseNumber(number);
+            Console.WriteLine($"Reversed number: {result}");
         }
     }
 }
