@@ -4,32 +4,34 @@ namespace FirstLesson_Practic
 {
     internal class Program
     {
-        void treeFromFirstnumbertoSecond(int firstNumber, int secondNumber)
-        {
-            if (firstNumber > secondNumber)
-            {
-                int ThirdNumber = firstNumber;
-                firstNumber = secondNumber;
-                secondNumber = ThirdNumber;
-            }
-            for (int i = firstNumber; i <= secondNumber; i++)
-            {
-                for(int j = 0; j  i; j++)
-                {
-                    
-                }
-            }
-        }
+
+
         static void Main(string[] args)
         {
-            Console.WriteLine("Enter first number:");
-            int firstNumber = int.Parse(Console.ReadLine());
+            Console.Write("Довжина лінії: ");
+            int length = Convert.ToInt32(Console.ReadLine());
 
-            Console.WriteLine("Enter second number:");
-            int secondNumber = int.Parse(Console.ReadLine());
+            Console.Write("Символ-заповнювач: ");
+            char symbol = Console.ReadLine()?[0] ?? '+';
 
-            int result = treeFromFirstnumbertoSecond(firstNumber, secondNumber);
-            Console.WriteLine($"Tree from {firstNumber} to {secondNumber}: {result}");
+            Console.Write("Напрямок (1 - горизонтальна, 2 - вертикальна): ");
+            int direction = Convert.ToInt32(Console.ReadLine());
+
+            if (direction == 1)
+            {
+                for (int i = 0; i < length; i++)
+                {
+                    Console.Write(symbol);
+                }
+                Console.WriteLine(); 
+            }
+            else
+            {
+                for (int i = 0; i < length; i++)
+                {
+                    Console.WriteLine(symbol);
+                }
+            }
         }
     }
 }
