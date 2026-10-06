@@ -9,36 +9,23 @@ namespace Homework
     {
         static void Main(string[] args)
         {
-            DateTime date = ReadDate("Введіть дату (дд.мм.рррр): ");
-            string season = GetSeason(date.Month);
-            Console.WriteLine($"{season} {date.DayOfWeek}");
-        }
+            Console.Write("Введіть температуру: ");
+            double temp = Convert.ToDouble(Console.ReadLine());
 
-        static DateTime ReadDate(string prompt)
-        {
-            while (true)
+            Console.Write("1 - з Фаренгейта в Цельсій, 2 - з Цельсія в Фаренгейт: ");
+            int choice = Convert.ToInt32(Console.ReadLine());
+
+            if (choice == 1)
             {
-                Console.Write(prompt);
-                string? input = Console.ReadLine();
-
-                if (DateTime.TryParseExact(input?.Trim(), "d.M.yyyy",
-                    CultureInfo.InvariantCulture, DateTimeStyles.None, out DateTime date))
-                {
-                    return date;
-                }
-
-                Console.WriteLine("Невірна дата. Приклад: 22.12.2021");
+                Console.WriteLine($"{temp} F = {(temp - 32) * 5 / 9:F2} C");
             }
-        }
-
-        static string GetSeason(int month)
-        {
-            switch (month)
+            else if (choice == 2)
             {
-                case 12: case 1: case 2: return "Winter";
-                case 3: case 4: case 5: return "Spring";
-                case 6: case 7: case 8: return "Summer";
-                default: return "Autumn";
+                Console.WriteLine($"{temp} C = {temp * 9 / 5 + 32:F2} F");
+            }
+            else
+            {
+                Console.WriteLine("Невірний вибір");
             }
         }
     }
