@@ -9,24 +9,26 @@ namespace Homework
     {
         static void Main(string[] args)
         {
-            Console.Write("Введіть температуру: ");
-            double temp = Convert.ToDouble(Console.ReadLine());
+            Console.Write("Введіть перше число: ");
+            int a = Convert.ToInt32(Console.ReadLine());
+            Console.Write("Введіть друге число: ");
+            int b = Convert.ToInt32(Console.ReadLine());
 
-            Console.Write("1 - з Фаренгейта в Цельсій, 2 - з Цельсія в Фаренгейт: ");
-            int choice = Convert.ToInt32(Console.ReadLine());
+            if (a > b)
+            {
+                int temp = a;
+                a = b;
+                b = temp;
+            }
 
-            if (choice == 1)
+            for (int i = a; i <= b; i++)
             {
-                Console.WriteLine($"{temp} F = {(temp - 32) * 5 / 9:F2} C");
+                if (i % 2 == 0)
+                {
+                    Console.Write($"{i} ");
+                }
             }
-            else if (choice == 2)
-            {
-                Console.WriteLine($"{temp} C = {temp * 9 / 5 + 32:F2} F");
-            }
-            else
-            {
-                Console.WriteLine("Невірний вибір");
-            }
+            Console.WriteLine();
         }
     }
 }
