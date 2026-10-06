@@ -1,24 +1,27 @@
-﻿namespace Homework
+﻿using System.Collections.Specialized;
+using System.Numerics;
+using static System.Runtime.InteropServices.JavaScript.JSType;
+
+namespace Homework
 {
     internal class Program
     {
         static void Main(string[] args)
         {
-            do{
-                Console.Write("Input number: ");
-                double number = double.Parse(Console.ReadLine());
-
-                Console.Write("Input percent: ");
-                double number2 = double.Parse(Console.ReadLine());
-
-
-                if (number < 0 || number2 < 0)
+            do
+            {
+                Console.WriteLine("Input how many eill be numbers in one: ");
+                int n = Convert.ToInt32(Console.ReadLine());
+                string[] number = new string[n];
+                for (int i = 0; i < n; i++)
                 {
-                    Console.WriteLine("Error: Please enter positive numbers.");
-                    continue;
+                    Console.Write($"Input number {i + 1}: ");
+                    number[i] = Console.ReadLine();
                 }
-                double result = (number * number2) / 100;
-                Console.WriteLine("Result: {0}", result);
+                foreach (string num in number)
+                {
+                    Console.Write(num + "");
+                }
                 break;
             } while (true);
         }
